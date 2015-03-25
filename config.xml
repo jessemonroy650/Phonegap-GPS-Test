@@ -7,7 +7,7 @@
         <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
 
-        <name>Phonegap Accelerometer test</name>
+        <name>Phonegap Geolocation test</name>
         <description>Simple GPS Test</description>
         <author href="http://bsdmasterindex.com" email="jessemonroy650@yahoo.com">
         Jesse Monroy
