@@ -26,6 +26,7 @@ var Location = {
 	},
 
 	watchLocation : function () {
+		alert('watch');
 		this.watchID = navigator.geolocation.watchPosition(this.callback.onSuccess, this.callback.onError, this.geoLocationOption);
 	},
 

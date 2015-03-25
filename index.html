@@ -56,13 +56,13 @@
 	//
 	//
 	function onDeviceReady() {
-		//
+		GPSClear();
 		Location.init(GPSonSuccess, GPSonError);
-		setTimeout(Location.watchLocation,300);
+		Location.watchLocation();
+		alert('device ready');
 	}
 	//
 	function onLoad() {
-		GPSClear();
 	}
 
     </script>
