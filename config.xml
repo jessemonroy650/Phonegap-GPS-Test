@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.bsdmasterindex.phonegapgeolocation-test"
+        version     = "1.0"
+        versionCode = "10" >
+        <!-- versionCode is optional and Android only -->
+        <preference name="phonegap-version" value="3.5.0" />
+
+        <name>Phonegap Accelerometer test</name>
+        <description>Simple GPS Test</description>
+        <author href="http://bsdmasterindex.com" email="jessemonroy650@yahoo.com">
+        Jesse Monroy
+        </author>
+        <gap:platform name="android" />
+        <preference name="permissions" value="none"/>
+        <gap:plugin name="org.apache.cordova.geolocation" />
+    </widget>
