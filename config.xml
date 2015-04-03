@@ -13,6 +13,8 @@
         Jesse Monroy
         </author>
         <gap:platform name="android" />
+		<gap:platform name="ios" />
+
         <preference name="permissions" value="none"/>
         <gap:plugin name="org.apache.cordova.geolocation" />
     </widget>
