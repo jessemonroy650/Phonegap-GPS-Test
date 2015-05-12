@@ -56,6 +56,11 @@
 	//
 	//
 	function onDeviceReady() {
+		// hide Exit button. They don't have one on iOS devices.
+		if (device.platform === "iOS") {
+			//alert("got iOS");
+			$("#exitApp").addClass("hidden");
+		}
 		GPSClear();
 		Location.init(GPSonSuccess, GPSonError);
 		Location.watchLocation();
@@ -63,7 +68,7 @@
 	}
 	//
 	function onLoad() {
-		onDeviceReady();
+		//onDeviceReady();
 	}
 
     </script>
@@ -74,7 +79,7 @@
 
 <button onclick='GPSOff()' class="button button-pill button-primary button-large" style="margin:0.1em">GPS Off</button>
 
-<button onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
+<button id=exitApp onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
 
 <div id=ax class="button button-block button-action button-large" style="margin:1em;">long <span id=long>-</span></div>
 
