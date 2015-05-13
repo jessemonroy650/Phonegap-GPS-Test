@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="buttons.css" />
     <style>
     body {margin:0px;font-size:large;}
-	.hidden {visibility:collapse;display:none;}
-	.expose {visibility:visible;display:block;} // Here for completeness only.
-	.copyright {padding:5px;align:left;font-style:italic;font-size:small;}
+    .hidden {visibility:collapse;display:none;}
+    .expose {visibility:visible;display:block;} // Here for completeness only.
+    .copyright {padding:5px;align:left;font-style:italic;font-size:small;}
     </style>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8" src="fastclick.js"></script>
@@ -41,16 +41,6 @@
 		document.getElementById('lat').innerHTML       = position.coords.latitude;
 		document.getElementById('accu').innerHTML      = position.coords.accuracy;
 		document.getElementById('timestamp').innerHTML = position.timestamp;
-/*
-		detail = 'Latitude: '      + position.coords.latitude              + '<br />' +
-			'Longitude: '          + position.coords.longitude             + '<br />' +
-			'Timestamp: '          + position.timestamp                    + '<br />' +
-			'Altitude: '           + position.coords.altitude              + '<br />' +
-			'Accuracy: '           + position.coords.accuracy              + '<br />' +
-			'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-			'Heading: '            + position.coords.heading               + '<br />' +
-			'Speed: '              + position.coords.speed;
-*/
 	};
 	//
 	//
@@ -59,7 +49,8 @@
 		// hide Exit button. They don't have one on iOS devices.
 		if (device.platform === "iOS") {
 			//alert("got iOS");
-			$("#exitApp").addClass("hidden");
+			// http://www.mzcart.com/javascript-how-to-addremove-css-class-from-a-dom-element/
+			document.getElementById('exitApp').classList.add("hidden");
 		}
 		GPSClear();
 		Location.init(GPSonSuccess, GPSonError);
