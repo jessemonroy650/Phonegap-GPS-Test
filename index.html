@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>PhoneGap Network Information Test</title>
+    <titlePhonegap Geolocation (GPS) Test</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="buttons.css" />
     <style>
@@ -9,63 +9,72 @@
     .hidden {visibility:collapse;display:none;}
     .expose {visibility:visible;display:block;} // Here for completeness only.
     .copyright {padding:5px;align:left;font-style:italic;font-size:small;}
+    #header {margin:0;padding:0;}
+    #exitApp {margin:0.1em;float:right;}
     </style>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8" src="fastclick.js"></script>
     <script type="text/javascript" charset="utf-8" src="gpsNotepad.js"></script>
     <script type="text/javascript">
-	// Get rid of 300ms delay 
-	document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body); }, false);
     // Wait for PhoneGap to load
-	document.addEventListener("deviceready", onDeviceReady, false);
-	//
-	//
-	//
-	function GPSOff() {
-		Location.clearWatch();
-	}
-	//
-	function GPSClear() {
-		document.getElementById('long').innerHTML = '&nbsp;';
-		document.getElementById('lat').innerHTML  = '&nbsp;';
-		document.getElementById('accu').innerHTML = '&nbsp;';
-		document.getElementById('timestamp').innerHTML = '&nbsp;';
-	};
-	//
-	function GPSonError (error) {
-		alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	};
-	//
-	function GPSonSuccess(position) {
-		document.getElementById('long').innerHTML      = position.coords.longitude;
-		document.getElementById('lat').innerHTML       = position.coords.latitude;
-		document.getElementById('accu').innerHTML      = position.coords.accuracy;
-		document.getElementById('timestamp').innerHTML = position.timestamp;
-	};
-	//
-	//
-	//
-	function onDeviceReady() {
-		// hide Exit button. They don't have one on iOS devices.
-		if (device.platform === "iOS") {
-			//alert("got iOS");
-			// http://www.mzcart.com/javascript-how-to-addremove-css-class-from-a-dom-element/
-			document.getElementById('exitApp').classList.add("hidden");
-		}
-		GPSClear();
-		Location.init(GPSonSuccess, GPSonError);
-		Location.watchLocation();
-		//alert('device ready');
-	}
-	//
-	function onLoad() {
-		//onDeviceReady();
-	}
+    document.addEventListener("deviceready", onDeviceReady, false);
+    //
+    //
+    //
+    function GPSOff() {
+        Location.clearWatch();
+    }
+    //
+    function GPSClear() {
+        document.getElementById('long').innerHTML = '&nbsp;';
+        document.getElementById('lat').innerHTML  = '&nbsp;';
+        document.getElementById('accu').innerHTML = '&nbsp;';
+        document.getElementById('timestamp').innerHTML = '&nbsp;';
+    };
+    //
+    function GPSonError (error) {
+        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    };
+    //
+    function GPSonSuccess(position) {
+        document.getElementById('long').innerHTML      = position.coords.longitude;
+        document.getElementById('lat').innerHTML       = position.coords.latitude;
+        document.getElementById('accu').innerHTML      = position.coords.accuracy;
+        document.getElementById('timestamp').innerHTML = position.timestamp;
+    };
+    //
+    //
+    //
+    function onDeviceReady() {
+        //alert('device ready');
+        if (device.platform === "iOS") {
+            //alert("got iOS");
+            // hide Exit button. They don't have one on iOS devices.
+            // http://www.mzcart.com/javascript-how-to-addremove-css-class-from-a-dom-element/
+            document.getElementById('exitApp').classList.add("hidden");
+        	/* deals with post-iOS-7 change that covers the status bar */
+        	/* http://coenraets.org/blog/2013/09/phonegap-and-cordova-with-ios-7/ */
+            document.body.style.marginTop = "20px";
+        } else if (device.platform == 'Android') {
+            // Get rid of 300ms delay 
+            document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body); }, false);
+        }
+        GPSClear();
+        Location.init(GPSonSuccess, GPSonError);
+        Location.watchLocation();
+    }
+    //
+    function onLoad() {
+        //onDeviceReady();
+    }
 
     </script>
 </head>
 <body onload="onLoad()">
-<div class="button button-block button-large"><img align=left src=favicon-48x48.png>Phonegap Geolocation (GPS) Test</div>
+<div id=header class="button button-block button-large">
+    <img align=left src=favicon-48x48.png>
+    Phonegap Geolocation (GPS) Test
+</div>
 <p />&nbsp;<p />
 
 <button onclick='GPSOff()' class="button button-pill button-primary button-large" style="margin:0.1em">GPS Off</button>
